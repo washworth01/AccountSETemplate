@@ -3,30 +3,49 @@ package com.qa.persistence.repository;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import com.qa.persistence.domain.Account;
+import com.qa.persistence.util.*;
 
 public class AccountMapRepository implements AccountRepository{
 	
-	Map<Long, Account> account = new HashMap<>();
-
-	public String getAllAccounts() {
-		// TODO Auto-generated method stub
-		return null;
+	public Map<Long, Account> accountMap = new HashMap<>();
+	  
+	JSONUtil util = new JSONUtil();
+	
+	public String getAllAccounts() 
+	{
+		return util.getJSONForObject(accountMap.values());		
+	}
+	
+	public String getAnAccount(Long id)
+	{
+		return util.getJSONForObject(accountMap.get(id));
 	}
 
-	public String createAccount(String account) {
-		// TODO Auto-generated method stub
-		return null;
+	public String createAccount(String account)
+	{
+		Account newAccount = util.getObjectForJSON(account, Account.class);
+		accountMap.put(newAccount.getAccountNumber(), newAccount);
+		return util.getJSONForObject(accountMap.get(newAccount.getAccountNumber()));
 	}
 
-	public String deleteAccount(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public String deleteAccount(Long id) 
+	{
+		if (accountMap.get(id) != null)
+		{
+			accountMap.remove(id);
+		}
+		
+		return "Account has been deleted.";
 	}
 
-	public String updateAccount(Long id, String account) {
-		// TODO Auto-generated method stub
-		return null;
+	public String updateAccount(Long id, String account)
+	{
+		Account newAccount = util.getObjectForJSON(account, Account.class);
+		accountMap.put(id, newAccount);
+		return util.getJSONForObject(accountMap.get(id));
 	}
 
 }
