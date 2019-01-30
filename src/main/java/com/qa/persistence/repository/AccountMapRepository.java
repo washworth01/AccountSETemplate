@@ -47,5 +47,19 @@ public class AccountMapRepository implements AccountRepository{
 		accountMap.put(id, newAccount);
 		return util.getJSONForObject(accountMap.get(id));
 	}
+	
+	public int countFirstNames(String name)
+	{
+		int nameCounter = 0;
+		for(Account account : accountMap.values())
+		{
+			if(account.getFirstName() == name)
+			{
+				nameCounter++;
+			}
+		}
+		
+		return nameCounter;
+	}
 
 }
