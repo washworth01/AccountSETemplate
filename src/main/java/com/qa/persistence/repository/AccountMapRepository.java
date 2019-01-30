@@ -2,9 +2,6 @@ package com.qa.persistence.repository;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Stream;
-
-import javax.inject.Inject;
 
 import com.qa.persistence.domain.Account;
 import com.qa.persistence.util.*;
