@@ -144,4 +144,4 @@ public class AccountServiceTest
 		assertEquals("The method should have returned 2 matches", 2, repository.countFirstNames("John"));
 	}
 
-}
+} 

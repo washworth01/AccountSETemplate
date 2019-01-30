@@ -2,6 +2,7 @@ package com.qa.persistence.repository;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import javax.inject.Inject;
 
@@ -53,7 +54,7 @@ public class AccountMapRepository implements AccountRepository{
 		int nameCounter = 0;
 		for(Account account : accountMap.values())
 		{
-			if(account.getFirstName() == name)
+			if(account.getFirstName().contains(name))
 			{
 				nameCounter++;
 			}
