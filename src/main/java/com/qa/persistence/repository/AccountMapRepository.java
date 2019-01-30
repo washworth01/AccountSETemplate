@@ -3,8 +3,6 @@ package com.qa.persistence.repository;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 import com.qa.persistence.domain.Account;
 import com.qa.persistence.util.*;
 
@@ -46,6 +44,20 @@ public class AccountMapRepository implements AccountRepository{
 		Account newAccount = util.getObjectForJSON(account, Account.class);
 		accountMap.put(id, newAccount);
 		return util.getJSONForObject(accountMap.get(id));
+	}
+	
+	public int countFirstNames(String name)
+	{
+		int nameCounter = 0;
+		for(Account account : accountMap.values())
+		{
+			if(account.getFirstName().contains(name))
+			{
+				nameCounter++;
+			}
+		}
+		
+		return nameCounter;
 	}
 
 }
