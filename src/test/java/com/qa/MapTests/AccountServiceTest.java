@@ -17,7 +17,7 @@ import com.qa.persistence.util.JSONUtil;
 public class AccountServiceTest
  {
 	AccountMapRepository repository = new AccountMapRepository();
-	JSONUtil util = new JSONUtil();
+	JSONUtil util = new JSONUtil(); 
 	
 	@Before
 	public void setup() 
@@ -121,8 +121,8 @@ public class AccountServiceTest
 	public void accountConversionToJSONTest()
 	{
 		String json = util.getJSONForObject(repository.accountMap.get((long)1));
-		assertEquals("JSON Strings did not match", "{\"firstName\":\"John\",\"lastName\":\"Cleese\",\"accountNumber\":1}", json);
-	}
+		assertEquals("JSON Strings did not match", "{\"accountNumber\":1,\"firstName\":\"John\",\"lastName\":\"Cleese\"}", json);
+	} 
 
 	@Test 
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() 
