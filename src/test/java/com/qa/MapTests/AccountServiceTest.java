@@ -25,7 +25,7 @@ public class AccountServiceTest
 	public void setup() 
 	{
 		Account account1 = new Account("John", "Cleese", (long) 1);
-		Account account2 = new Account("Frank", "West", (long) 2);
+		Account account2 = new Account("John", "Wick", (long) 2);
 		Account account3 = new Account("George", "Bush2", (long) 3);
 		
 		repository.accountMap.put((long) 1, account1);
@@ -129,19 +129,20 @@ public class AccountServiceTest
 	@Test 
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() 
 	{
-		
+		assertEquals("The method sould have returned 0 matches", 0, repository.countFirstNames("Victor"));
 	}
 	
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() 
 	{
-		
+		assertEquals("The method should have returned 1 match", 1, repository.countFirstNames("George"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenMult()
 	{
 		
+		assertEquals("The method should have returned 2 matches", 2, repository.countFirstNames("John"));
 	}
 
 }
