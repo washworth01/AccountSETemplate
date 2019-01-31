@@ -114,15 +114,18 @@ public class AccountServiceTest
 	@Test
 	public void accountConversionToJSONTestEmptyMapWithConversion()
 	{
+		String json = util.getJSONForObject(repository.accountMap.get((long)13)); 
+		String jsonConverted = util.getJSONForObject(json);
 		
+		assertEquals("JSON Strings did not match", "\"null\"", jsonConverted); 
 	} 
-
+  
 	@Test
 	public void accountConversionToJSONTest()
 	{
 		String json = util.getJSONForObject(repository.accountMap.get((long)1));
 		assertEquals("JSON Strings did not match", "{\"accountNumber\":1,\"firstName\":\"John\",\"lastName\":\"Cleese\"}", json);
-	} 
+	}  
 
 	@Test 
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() 

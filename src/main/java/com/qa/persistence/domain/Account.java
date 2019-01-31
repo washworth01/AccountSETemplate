@@ -10,6 +10,8 @@ import javax.persistence.Id;
 public class Account 
 {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	@Column(length = 8)
 	private Long accountNumber;
 	@Column(length = 20)
 	private String firstName;
