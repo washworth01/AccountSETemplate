@@ -1,7 +1,7 @@
-package com.qa.persistence.repository;
+package com.qa.business.services;
 
-public interface AccountRepository {
-
+public interface AccountServices 
+{
 	String getAllAccounts();
 	String createAccount(String account);
 	String deleteAccount(Long id);
